@@ -130,7 +130,7 @@ class PublicAndStudentTest extends TestCase
             'name' => 'Nonaktif User',
             'email' => 'nonaktif@sipmb.test',
             'password' => bcrypt('password'),
-            'role' => 'staff',
+            'role' => 'admin',
             'is_active' => false,
         ]);
 

@@ -455,10 +455,6 @@
 
       </form>
 
-      <div class="auth-link-secondary">
-        Kunjungi <a href="{{ route('home') }}">halaman informasi pendaftaran</a> terlebih dahulu
-      </div>
-
     </div>
   </div>
 

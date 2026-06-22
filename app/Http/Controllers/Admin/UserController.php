@@ -31,9 +31,6 @@ class UserController extends Controller
     {
         $roles = [
             'admin' => 'Administrator',
-            'staff' => 'Staff',
-            'operator' => 'Operator',
-            'kepala_sekolah' => 'Kepala Sekolah',
         ];
         
         return view('admin.users.create', compact('roles'));
@@ -48,7 +45,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'role' => 'required|in:admin,staff,operator,kepala_sekolah',
+            'role' => 'required|in:admin',
         ]);
 
         User::create([
@@ -71,9 +68,6 @@ class UserController extends Controller
         
         $roles = [
             'admin' => 'Administrator',
-            'staff' => 'Staff',
-            'operator' => 'Operator',
-            'kepala_sekolah' => 'Kepala Sekolah',
         ];
 
         return view('admin.users.edit', compact('user', 'roles'));
@@ -90,7 +84,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8',
-            'role' => 'required|in:admin,staff,operator,kepala_sekolah',
+            'role' => 'required|in:admin',
         ]);
 
         $isActive = $request->has('is_active') ? true : false;

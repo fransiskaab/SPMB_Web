@@ -57,9 +57,8 @@ class AuthController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        if ($user->isKepalaSekolah()) {
-            // Placeholder/route for kepala sekolah
-            return redirect()->to('/');
+        if ($user->isCalonMurid()) {
+            return redirect()->route('student.dashboard');
         }
 
         return redirect()->to('/');

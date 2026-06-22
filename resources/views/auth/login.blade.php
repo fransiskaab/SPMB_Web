@@ -365,7 +365,7 @@
         </li>
         <li>
           <i class="mdi mdi-account-multiple-outline"></i>
-          <span>Manajemen multi-peran: Admin, Staff, Operator, & Kepala Sekolah</span>
+          <span>Akses Portal: Administrator & Calon Siswa / Wali Murid</span>
         </li>
       </ul>
     </div>
@@ -430,11 +430,6 @@
           @enderror
         </div>
 
-        <div class="form-remember">
-          <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-          <label for="remember">Ingat saya di perangkat ini</label>
-        </div>
-
         <button type="submit" class="btn-auth">
           <i class="mdi mdi-login me-1"></i> Masuk ke Akun
         </button>
@@ -442,10 +437,6 @@
       </form>
 
       <div class="auth-divider">atau</div>
-
-      <div class="auth-link-secondary">
-        Kunjungi <a href="{{ route('home') }}">halaman informasi pendaftaran</a> untuk mengetahui lebih lanjut.
-      </div>
 
     </div>
   </div>

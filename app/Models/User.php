@@ -72,18 +72,5 @@ class User extends Authenticatable
         return $this->role === 'calon_murid';
     }
 
-    public function isKepalaSekolah(): bool
-    {
-        return $this->role === 'kepala_sekolah';
-    }
 
-    public function isStaff(): bool
-    {
-        return $this->role === 'staff';
-    }
-
-    public function isOperator(): bool
-    {
-        return $this->role === 'operator';
-    }
 }

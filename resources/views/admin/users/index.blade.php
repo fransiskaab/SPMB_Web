@@ -15,7 +15,7 @@
 <div class="page-header">
   <div class="page-header-left">
     <h1>Manajemen Pengguna</h1>
-    <p>Kelola akun administrator, staff, operator, dan kepala sekolah yang berwenang mengakses sistem.</p>
+    <p>Kelola akun administrator yang berwenang mengakses sistem.</p>
   </div>
   <div class="page-header-actions">
     <a href="{{ route('admin.users.create') }}" class="btn btn-primary d-flex align-items-center gap-2" style="padding: 8px 16px; font-size: 0.85rem;">
@@ -49,12 +49,6 @@
               <td>
                 @if($item->role === 'admin')
                   <span class="badge badge-primary font-weight-bold">Administrator</span>
-                @elseif($item->role === 'staff')
-                  <span class="badge badge-success font-weight-bold">Staff Akademik</span>
-                @elseif($item->role === 'operator')
-                  <span class="badge badge-info font-weight-bold">Operator</span>
-                @elseif($item->role === 'kepala_sekolah')
-                  <span class="badge badge-warning font-weight-bold">Kepala Sekolah</span>
                 @else
                   <span class="badge badge-secondary font-weight-bold">{{ $item->role }}</span>
                 @endif

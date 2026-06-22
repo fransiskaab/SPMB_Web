@@ -29,7 +29,7 @@
 
       <li class="sidebar-nav-item">
         <a class="sidebar-nav-link {{ request()->routeIs('admin.kelas.*') ? 'active' : '' }}" href="{{ route('admin.kelas.index') }}">
-          <i class="mdi mdi-school-outline nav-icon"></i>
+          <i class="mdi mdi-school nav-icon"></i>
           <span>Data Kelas</span>
         </a>
       </li>
@@ -45,14 +45,14 @@
 
       <li class="sidebar-nav-item">
         <a class="sidebar-nav-link {{ request()->routeIs('admin.siswa.*') ? 'active' : '' }}" href="{{ route('admin.siswa.index') }}">
-          <i class="mdi mdi-account-check-outline nav-icon"></i>
+          <i class="mdi mdi-account-check nav-icon"></i>
           <span>Verifikasi Siswa</span>
         </a>
       </li>
 
       <li class="sidebar-nav-item">
         <a class="sidebar-nav-link {{ request()->routeIs('admin.pembayaran.*') ? 'active' : '' }}" href="{{ route('admin.pembayaran.index') }}">
-          <i class="mdi mdi-cash-check nav-icon"></i>
+          <i class="mdi mdi-cash-multiple nav-icon"></i>
           <span>Verifikasi Pembayaran</span>
         </a>
       </li>
@@ -121,10 +121,7 @@
         <span class="sidebar-user-name">{{ auth()->user()->name }}</span>
         <span class="sidebar-user-role">
           @if(auth()->user()->isAdmin()) Administrator
-          @elseif(auth()->user()->isCalonMurid()) Calon Siswa
-          @elseif(auth()->user()->isStaff()) Staff Akademik
-          @elseif(auth()->user()->isOperator()) Operator
-          @elseif(auth()->user()->isKepalaSekolah()) Kepala Sekolah
+          @elseif(auth()->user()->isCalonMurid()) Calon Siswa/Wali Murid
           @else {{ auth()->user()->role }}
           @endif
         </span>

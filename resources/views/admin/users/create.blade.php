@@ -17,7 +17,7 @@
 <div class="page-header">
   <div class="page-header-left">
     <h1>Tambah Pengguna Baru</h1>
-    <p>Daftarkan akun administrator, staff, operator, atau kepala sekolah baru.</p>
+    <p>Daftarkan akun administrator baru.</p>
   </div>
   <div class="page-header-actions">
     <a href="{{ route('admin.users.index') }}" class="btn btn-sm" style="background: white; border: 1px solid var(--border); color: var(--text-secondary); border-radius: 8px; display: flex; align-items: center; gap: 6px; padding: 7px 14px; font-size: 0.82rem; font-weight: 500; text-decoration: none;">
@@ -31,7 +31,7 @@
     <div class="card shadow-sm">
       <div class="card-body">
         <h4 class="card-title">Tambah Pengguna Baru</h4>
-        <p class="card-description">Daftarkan akun administrator, staff, operator, atau kepala sekolah baru.</p>
+        <p class="card-description">Daftarkan akun administrator baru.</p>
 
         @if ($errors->any())
           <div class="alert alert-danger py-2">
