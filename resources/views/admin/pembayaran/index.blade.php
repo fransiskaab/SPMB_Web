@@ -76,7 +76,14 @@
               </td>
               <td class="text-center">
                 @if($item->bukti_pembayaran)
-                  <i class="mdi mdi-file-image text-primary fs-4"></i>
+                  @php
+                    $imageSrc = filter_var($item->bukti_pembayaran, FILTER_VALIDATE_URL) 
+                                ? $item->bukti_pembayaran 
+                                : asset('storage/' . $item->bukti_pembayaran);
+                  @endphp
+                  <a href="{{ $imageSrc }}" target="_blank">
+                    <img src="{{ $imageSrc }}" width="80px" alt="Bukti" class="rounded border shadow-sm" />
+                  </a>
                 @else
                   <span class="text-muted small">-</span>
                 @endif

@@ -9,6 +9,7 @@ use App\Models\Siswa;
 use App\Models\TransaksiPembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class StudentDashboardController extends Controller
 {
@@ -238,7 +239,37 @@ class StudentDashboardController extends Controller
             'bukti_pembayaran' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $path = $request->file('bukti_pembayaran')->store('bukti_bayar', 'public');
+        $path = '';
+        if ($request->hasFile('bukti_pembayaran')) {
+            try {
+                $file = $request->file('bukti_pembayaran');
+                $response = Http::asMultipart()->post(
+                    'https://api.cloudinary.com/v1_1/' . env('CLOUDINARY_CLOUD_NAME') . '/image/upload',
+                    [
+                        [
+                            'name'     => 'file',
+                            'contents' => fopen($file->getRealPath(), 'r'),
+                            'filename' => $file->getClientOriginalName(),
+                        ],
+                        [
+                            'name'     => 'upload_preset',
+                            'contents' => env('CLOUDINARY_UPLOAD_PRESET'),
+                        ],
+                    ]
+                );
+
+                $result = $response->json();
+                if (isset($result['secure_url'])) {
+                    $path = $result['secure_url'];
+                } else {
+                    return back()->withErrors(['bukti_pembayaran' => 'Cloudinary upload error: ' . ($result['error']['message'] ?? 'Unknown error')]);
+                }
+            } catch (\Exception $e) {
+                return back()->withErrors(['bukti_pembayaran' => 'Cloudinary error: ' . $e->getMessage()]);
+            }
+        } else {
+            return back()->withErrors(['bukti_pembayaran' => 'File bukti pembayaran diperlukan.']);
+        }
 
         TransaksiPembayaran::create([
             'siswa_id' => $siswa->id,
